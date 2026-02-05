@@ -1,0 +1,152 @@
+{
+  "project": "GEO-First Tech Blog (my-blog)",
+  "branchName": "ralph/geo-blog-initial-setup",
+  "description": "클로드 코드(Claude Code)의 인사이트를 담는 기술 블로그. Google SEO와 AI 검색(GEO)을 동시에 만족시키며, Mixpanel을 통해 사용자 행동을 정밀하게 분석하는 Next.js 14+ 기반 블로그.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Next.js 프로젝트 초기 세팅",
+      "description": "As a developer, I want to create a Next.js 14+ project with TypeScript, Tailwind CSS, and App Router so that I have a solid foundation for the GEO-optimized blog.",
+      "acceptanceCriteria": [
+        "Next.js 최신 버전으로 프로젝트 생성 완료 (App Router, TypeScript, Tailwind)",
+        "프로젝트 구조: src-dir, import alias @/* 설정됨",
+        "npm으로 패키지 관리 설정됨",
+        "기본 페이지가 로컬에서 정상 실행됨 (npm run dev)",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": true
+    },
+    {
+      "id": "US-002",
+      "title": "핵심 라이브러리 설치 및 Shadcn/UI 초기화",
+      "description": "As a developer, I want to install all required libraries including Shadcn/UI, next-sitemap, MDX, and utilities so that I have all dependencies ready.",
+      "acceptanceCriteria": [
+        "Shadcn/UI init 완료 (components.json 생성됨)",
+        "next-sitemap 설치됨",
+        "next-mdx-remote, gray-matter 설치됨",
+        "lucide-react, date-fns, clsx, tailwind-merge 설치됨",
+        "package.json에 모든 의존성 정상 기록됨",
+        "npm install 에러 없이 완료",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": true
+    },
+    {
+      "id": "US-003",
+      "title": "Mixpanel 클라이언트 SDK 통합",
+      "description": "As a developer, I want to integrate Mixpanel browser SDK with async initialization so that analytics tracking doesn't impact Core Web Vitals.",
+      "acceptanceCriteria": [
+        "mixpanel-browser 설치됨",
+        "Mixpanel 초기화 유틸리티 함수 작성됨 (비동기 로딩)",
+        "클라이언트 컴포넌트에서 Mixpanel provider/hook 구현됨",
+        "초기화 스크립트가 Hydration 이후에 실행되도록 설정됨",
+        "환경변수로 Mixpanel token 관리 (.env.local)",
+        "Typecheck passes"
+      ],
+      "priority": 3,
+      "passes": true
+    },
+    {
+      "id": "US-004",
+      "title": "SEO 기본 설정 및 메타데이터",
+      "description": "As a developer, I want to set up proper SEO metadata and sitemap generation so that the blog is optimized for Google/Bing search engines.",
+      "acceptanceCriteria": [
+        "Next.js App Router metadata API 활용한 기본 메타태그 설정",
+        "next-sitemap 설정 파일 작성 (next-sitemap.config.js)",
+        "robots.txt 생성 설정",
+        "OpenGraph, Twitter Card 메타태그 포함",
+        "Canonical URL 설정",
+        "Typecheck passes",
+        "Build 성공"
+      ],
+      "priority": 4,
+      "passes": true
+    },
+    {
+      "id": "US-005",
+      "title": "MDX 블로그 포스트 시스템 구현",
+      "description": "As a content creator, I want to write blog posts in MDX format so that I can create rich, interactive content with React components.",
+      "acceptanceCriteria": [
+        "posts/ 디렉토리 구조 정의됨",
+        "MDX 파일 파싱 유틸리티 함수 작성 (gray-matter 활용)",
+        "next-mdx-remote 렌더링 컴포넌트 구현",
+        "블로그 포스트 리스트 페이지 작성",
+        "개별 블로그 포스트 페이지 작성 (동적 라우팅)",
+        "샘플 MDX 포스트 1개 이상 작성됨",
+        "Typecheck passes",
+        "MDX 렌더링 정상 작동"
+      ],
+      "priority": 5,
+      "passes": true
+    },
+    {
+      "id": "US-006",
+      "title": "Mixpanel 이벤트 트래킹 구현",
+      "description": "As a blog admin, I want to track user behaviors (code copy, scroll depth, reading time) via Mixpanel so that I can analyze content effectiveness.",
+      "acceptanceCriteria": [
+        "코드 복사 버튼 클릭 이벤트 트래킹",
+        "스크롤 깊이 측정 (25%, 50%, 75%, 100%)",
+        "독서 시간 측정 (체류 시간)",
+        "페이지뷰 이벤트 자동 트래킹",
+        "모든 이벤트가 Mixpanel 대시보드에 정상 전송됨",
+        "성능 영향 최소화 확인 (Lighthouse 점수 유지)",
+        "Typecheck passes"
+      ],
+      "priority": 6,
+      "passes": true
+    },
+    {
+      "id": "US-007",
+      "title": "Core Web Vitals 최적화",
+      "description": "As a developer, I want to optimize Core Web Vitals (LCP, FID, CLS) so that the blog achieves perfect SEO scores.",
+      "acceptanceCriteria": [
+        "이미지 최적화 (next/image 활용)",
+        "폰트 최적화 (next/font 활용)",
+        "코드 스플리팅 및 lazy loading 적용",
+        "Mixpanel 스크립트 비동기 로딩 확인",
+        "Lighthouse 점수: Performance 90+, SEO 100",
+        "LCP < 2.5s, FID < 100ms, CLS < 0.1",
+        "Build 성공",
+        "Typecheck passes"
+      ],
+      "priority": 7,
+      "passes": true
+    },
+    {
+      "id": "US-008",
+      "title": "Tailwind + Shadcn UI 컴포넌트 구축",
+      "description": "As a user, I want a beautiful and responsive UI so that I have a pleasant reading experience.",
+      "acceptanceCriteria": [
+        "메인 레이아웃 컴포넌트 작성 (헤더, 푸터, 네비게이션)",
+        "Shadcn/UI 컴포넌트 활용 (Button, Card 등)",
+        "반응형 디자인 (모바일, 태블릿, 데스크톱)",
+        "다크모드 지원 (선택사항)",
+        "타이포그래피 최적화 (가독성)",
+        "코드 하이라이팅 스타일 적용",
+        "Typecheck passes",
+        "UI/UX 시각적 확인 완료"
+      ],
+      "priority": 8,
+      "passes": true
+    },
+    {
+      "id": "US-009",
+      "title": "최종 통합 및 프로덕션 준비",
+      "description": "As a developer, I want to verify all features work together correctly so that the blog is ready for deployment.",
+      "acceptanceCriteria": [
+        "모든 user stories US-001 ~ US-008 완료",
+        "End-to-end 테스트 (블로그 탐색, 포스트 읽기, 이벤트 발생)",
+        "Typecheck 에러 없음",
+        "Build 에러 없음",
+        "Console 에러 없음",
+        "README.md 작성 (프로젝트 설명, 설치 방법, 환경변수)",
+        "Mixpanel 이벤트 실제 전송 확인",
+        "Lighthouse 점수 목표 달성 (Performance 90+, SEO 100)"
+      ],
+      "priority": 9,
+      "passes": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# GEO-First Tech Blog
+
+> Claude Code 인사이트를 담는 기술 블로그
+
+## About
+이 블로그는 Claude Code와 AI 개발의 최신 인사이트를 공유합니다.
+
+## Content
+- 기술 블로그 포스트 (MDX 형식)
+- AI 및 개발 관련 튜토리얼
+- Next.js, TypeScript 베스트 프랙티스
+
+## Sections
+- /blog - 모든 블로그 포스트
+- /about - 프로젝트 소개
+
+## Contact
+- Website: https://your-domain.com
+- Email: contact@your-domain.com

@@ -1,0 +1,20 @@
+# Ralph Progress Log
+Started: 2026-02-06T01:23:30.000Z
+
+## Project Context
+- **Project:** GEO-First Tech Blog (my-blog)
+- **Tech Stack:** Next.js 14+ (App Router), TypeScript, Tailwind CSS, Shadcn/UI
+- **Analytics:** Mixpanel (Client-side SDK, mixpanel-browser)
+- **Content:** MDX (next-mdx-remote, gray-matter)
+- **Goals:** Google/Bing SEO 100점, Event-Driven Analytics, Core Web Vitals 최적화
+
+## Codebase Patterns
+(No patterns discovered yet - project initialization phase)
+
+## Key Technical Decisions
+- **Analytics Implementation:** Mixpanel 스크립트는 Hydration 이후 비동기 로딩하여 LCP 영향 최소화
+- **Content Format:** MDX for rich, interactive blog posts
+- **SEO Strategy:** next-sitemap, metadata API, OpenGraph/Twitter Cards
+- **Performance Target:** LCP < 2.5s, FID < 100ms, CLS < 0.1, Lighthouse Performance 90+, SEO 100
+
+---
