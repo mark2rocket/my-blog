@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { MixpanelProvider } from '@/components/providers/MixpanelProvider';
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://example.com'),
@@ -46,7 +39,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={dmSans.variable}>
+    <html lang="ko">
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <script
           type="application/ld+json"
