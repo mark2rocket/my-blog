@@ -5,43 +5,56 @@ import { format } from 'date-fns';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: '기술 블로그 포스트 목록',
+  description: 'CPF 인사이트 — 비즈니스 컨설팅과 전략에 관한 글',
 };
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">Blog</h1>
+    <main className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+      <div className="mb-12">
+        <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">
+          Insights
+        </span>
+        <h1 className="text-4xl font-semibold tracking-tight mt-3 text-zinc-900">Blog</h1>
+      </div>
 
       {posts.length === 0 ? (
-        <p className="text-gray-600">아직 작성된 포스트가 없습니다.</p>
+        <div className="py-16 border-t border-zinc-200">
+          <p className="text-zinc-400 text-sm">아직 작성된 포스트가 없습니다.</p>
+        </div>
       ) : (
-        <div className="space-y-8">
+        <div className="divide-y divide-zinc-200">
           {posts.map((post) => (
-            <article key={post.slug} className="border-b pb-6">
-              <Link href={`/blog/${post.slug}`}>
-                <h2 className="text-2xl font-semibold hover:text-blue-600 transition-colors">
-                  {post.title}
-                </h2>
-              </Link>
-              <time className="text-sm text-gray-500 block mt-1">
-                {format(new Date(post.date), 'yyyy년 MM월 dd일')}
-              </time>
-              <p className="mt-2 text-gray-700">{post.description}</p>
-              {post.tags && post.tags.length > 0 && (
-                <div className="mt-2 flex gap-2">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-gray-100 px-2 py-1 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            <article key={post.slug} className="group py-8">
+              <Link href={`/blog/${post.slug}`} className="block">
+                <div className="flex items-start justify-between gap-8">
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-xl font-medium text-zinc-900 group-hover:text-primary transition-colors duration-150 mb-2">
+                      {post.title}
+                    </h2>
+                    <p className="text-sm text-zinc-500 leading-relaxed line-clamp-2 mb-3">
+                      {post.description}
+                    </p>
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {post.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <time className="text-xs text-zinc-400 shrink-0 pt-1">
+                    {format(new Date(post.date), 'yyyy.MM.dd')}
+                  </time>
                 </div>
-              )}
+              </Link>
             </article>
           ))}
         </div>

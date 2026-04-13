@@ -1,38 +1,38 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { MixpanelProvider } from '@/components/providers/MixpanelProvider';
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-dm-sans',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://example.com'),
   title: {
-    default: 'GEO-First Tech Blog',
-    template: '%s | GEO-First Tech Blog',
+    default: 'CPF — Consulting & Insights',
+    template: '%s | CPF',
   },
-  description: 'Claude Code 인사이트를 담는 기술 블로그. AI와 개발의 최신 트렌드를 공유합니다.',
-  keywords: ['Claude Code', 'AI', '기술 블로그', 'Next.js', 'TypeScript'],
-  authors: [{ name: 'Blog Author' }],
-  creator: 'Blog Author',
+  description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF의 블로그입니다.',
+  keywords: ['컨설팅', '인사이트', 'CPF', '비즈니스', '전략'],
+  authors: [{ name: 'CPF' }],
+  creator: 'CPF',
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
     url: '/',
-    siteName: 'GEO-First Tech Blog',
-    title: 'GEO-First Tech Blog',
-    description: 'Claude Code 인사이트를 담는 기술 블로그',
+    siteName: 'CPF',
+    title: 'CPF — Consulting & Insights',
+    description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF의 블로그입니다.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GEO-First Tech Blog',
-    description: 'Claude Code 인사이트를 담는 기술 블로그',
+    title: 'CPF — Consulting & Insights',
+    description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달합니다.',
   },
   robots: {
     index: true,
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={inter.variable}>
+    <html lang="ko" className={dmSans.variable}>
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <script
           type="application/ld+json"
@@ -54,16 +54,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'GEO-First Tech Blog',
+              name: 'CPF',
               url: process.env.SITE_URL || 'https://example.com',
-              logo: `${process.env.SITE_URL || 'https://example.com'}/og-image.svg`,
-              description: 'Claude Code 인사이트를 담는 기술 블로그',
-              sameAs: [
-                // 소셜 프로필 링크 (실제 사용 시 추가)
-                // 'https://twitter.com/yourhandle',
-                // 'https://github.com/yourorg',
-                // 'https://linkedin.com/company/yourcompany'
-              ],
+              description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF',
             }),
           }}
         />
