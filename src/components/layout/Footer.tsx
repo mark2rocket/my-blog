@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-4 bg-primary rounded-full" />
+              <span className="w-1.5 h-5 bg-primary rounded-full" />
               <span className="font-semibold tracking-tight text-zinc-900">CPF</span>
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed max-w-[30ch]">

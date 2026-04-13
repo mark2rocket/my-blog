@@ -43,7 +43,6 @@ export default async function HomePage() {
       {/* Hero — Split layout */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="grid md:grid-cols-[58fr_42fr] gap-14 items-center">
-          {/* Left: text */}
           <div>
             <div className="flex items-center gap-2 mb-7">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -68,14 +67,14 @@ export default async function HomePage() {
               </Link>
               <Link
                 href="/about"
-                className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
               >
                 CPF 소개 →
               </Link>
             </div>
           </div>
 
-          {/* Right: hero image */}
+          {/* Hero image */}
           <div className="relative hidden md:block">
             <div className="relative rounded-2xl overflow-hidden aspect-[3/4] shadow-xl shadow-zinc-200/80">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -86,7 +85,6 @@ export default async function HomePage() {
               />
               <div className="absolute inset-0 bg-primary/8" />
             </div>
-            {/* Decorative accents */}
             <div className="absolute -bottom-5 -left-5 w-28 h-28 rounded-2xl bg-primary/8 -z-10" />
             <div className="absolute -top-3 -right-3 w-16 h-16 rounded-xl bg-zinc-100 -z-10" />
           </div>
@@ -96,11 +94,11 @@ export default async function HomePage() {
       {/* Feature strip */}
       <section className="border-y border-zinc-200 bg-zinc-50/70">
         <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:divide-x divide-zinc-200">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-zinc-200">
             {features.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="px-0 md:px-8 py-6 md:py-0 first:pl-0 last:pr-0">
+                <div key={i} className="px-0 md:px-8 py-8 md:py-0 first:pt-0 last:pb-0 md:first:pt-0 md:last:pb-0 first:pl-0 last:pr-0">
                   <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon size={18} className="text-primary" />
                   </div>
@@ -113,7 +111,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Image highlight section */}
+      {/* Image highlight */}
       <section className="max-w-6xl mx-auto px-6 py-16 md:py-20">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="grid grid-cols-2 gap-3">
@@ -133,7 +131,7 @@ export default async function HomePage() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="rounded-xl overflow-hidden aspect-square col-span-2 h-36">
+            <div className="rounded-xl overflow-hidden col-span-2 h-36">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://picsum.photos/seed/cpf-team/800/300"
@@ -155,7 +153,7 @@ export default async function HomePage() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity duration-150"
             >
               자세히 알아보기 <ArrowRight size={14} />
             </Link>
@@ -170,27 +168,35 @@ export default async function HomePage() {
 
       {/* Recent Posts */}
       <section className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div className="flex items-baseline justify-between mb-8">
-          <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-            Recent
-          </span>
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400 block mb-1">
+              Recent
+            </span>
+            <h2 className="text-2xl font-bold tracking-tight text-zinc-900">최근 인사이트</h2>
+          </div>
           <Link
             href="/blog"
-            className="text-sm text-zinc-400 hover:text-primary transition-colors duration-150"
+            className="text-sm text-zinc-400 hover:text-primary transition-colors duration-150 pb-1"
           >
             전체 보기 →
           </Link>
         </div>
 
         {recentPosts.length === 0 ? (
-          <p className="text-zinc-400 text-sm py-12">아직 작성된 포스트가 없습니다.</p>
+          <div className="py-12 border-t border-zinc-200 text-center">
+            <p className="text-zinc-400 text-sm mb-3">아직 작성된 포스트가 없습니다.</p>
+            <Link href="/about" className="text-sm text-primary hover:opacity-80 transition-opacity">
+              CPF 소개 먼저 보기 →
+            </Link>
+          </div>
         ) : (
           <div className="divide-y divide-zinc-200">
             {recentPosts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex items-baseline justify-between gap-6 py-5 -mx-3 px-3 rounded-lg hover:bg-zinc-50 transition-colors duration-150"
+                className="group flex items-baseline justify-between gap-6 py-5 -mx-3 px-3 rounded-lg hover:bg-zinc-50 hover:-translate-y-px transition-all duration-150"
               >
                 <div className="flex-1 min-w-0">
                   <h3 className="text-base font-bold text-zinc-900 group-hover:text-primary transition-colors duration-150 line-clamp-1 mb-1">

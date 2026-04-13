@@ -5,49 +5,51 @@ import { CodeBlock } from './CodeBlock';
 
 export const mdxComponents: MDXComponents = {
   h1: ({ children }) => (
-    <h1 className="text-4xl font-bold mt-8 mb-4">{children}</h1>
+    <h1 className="text-4xl font-bold tracking-tight leading-tight mt-10 mb-5 text-zinc-900">
+      {children}
+    </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-3xl font-semibold mt-6 mb-3">{children}</h2>
+    <h2 className="text-2xl font-semibold tracking-tight mt-10 mb-4 text-zinc-900">
+      {children}
+    </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-2xl font-medium mt-4 mb-2">{children}</h3>
+    <h3 className="text-lg font-semibold mt-7 mb-3 text-zinc-800">{children}</h3>
   ),
   p: ({ children }) => (
-    <p className="my-4 leading-7">{children}</p>
+    <p className="my-5 leading-[1.9] text-zinc-700">{children}</p>
   ),
   a: ({ href, children }) => (
     <Link
       href={href || '#'}
-      className="text-blue-600 hover:text-blue-800 underline"
+      className="text-primary hover:opacity-75 underline underline-offset-2 transition-opacity duration-150"
     >
       {children}
     </Link>
   ),
   ul: ({ children }) => (
-    <ul className="list-disc list-inside my-4 space-y-2">{children}</ul>
+    <ul className="list-disc list-outside pl-5 my-5 space-y-2 text-zinc-700">{children}</ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-decimal list-inside my-4 space-y-2">{children}</ol>
+    <ol className="list-decimal list-outside pl-5 my-5 space-y-2 text-zinc-700">{children}</ol>
   ),
   li: ({ children }) => (
-    <li className="leading-7">{children}</li>
+    <li className="leading-[1.9]">{children}</li>
   ),
   blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-gray-300 pl-4 my-4 italic text-gray-700">
+    <blockquote className="border-l-4 border-primary/40 pl-5 my-7 py-3 bg-accent/20 rounded-r-md text-zinc-600 leading-[1.9] not-italic">
       {children}
     </blockquote>
   ),
   code: ({ className, children }) => {
-    // Inline code
     if (!className) {
       return (
-        <code className="bg-gray-100 rounded px-1.5 py-0.5 text-sm font-mono">
+        <code className="bg-zinc-100 rounded px-1.5 py-0.5 text-sm font-mono text-zinc-700">
           {children}
         </code>
       );
     }
-    // Code block
     return <CodeBlock className={className}>{children as string}</CodeBlock>;
   },
   pre: ({ children }) => <>{children}</>,
@@ -57,7 +59,7 @@ export const mdxComponents: MDXComponents = {
       alt={alt || ''}
       width={800}
       height={400}
-      className="rounded-lg my-4"
+      className="rounded-lg my-6 w-full"
     />
   ),
 };
