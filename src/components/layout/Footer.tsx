@@ -37,6 +37,25 @@ export function Footer() {
                 </Link>
               </div>
             </div>
+            <div>
+              <p className="text-xs font-medium text-zinc-900 uppercase tracking-widest mb-3">
+                Legal
+              </p>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/privacy-policy"
+                  className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
+                >
+                  개인정보처리방침
+                </Link>
+                <Link
+                  href="/data-deletion"
+                  className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
+                >
+                  데이터 삭제 요청
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-zinc-200">
