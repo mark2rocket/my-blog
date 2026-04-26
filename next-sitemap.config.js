@@ -11,12 +11,12 @@ module.exports = {
       },
       {
         userAgent: '*',
-        disallow: ['/api/', '/_next/'],
+        disallow: ['/api/', '/_next/', '/privacy-policy', '/data-deletion'],
       },
     ],
     additionalSitemaps: [],
   },
-  exclude: ['/api/*', '/_next/*'],
+  exclude: ['/api/*', '/_next/*', '/privacy-policy', '/data-deletion'],
   changefreq: 'weekly',
   priority: 0.7,
 };

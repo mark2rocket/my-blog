@@ -6,9 +6,11 @@ Allow: /
 User-agent: *
 Disallow: /api/
 Disallow: /_next/
+Disallow: /privacy-policy
+Disallow: /data-deletion
 
 # Host
-Host: https://your-domain.com
+Host: https://example.com
 
 # Sitemaps
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://example.com/sitemap.xml
