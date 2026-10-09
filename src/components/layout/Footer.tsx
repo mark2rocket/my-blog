@@ -1,3 +1,4 @@
+import { site } from '@/lib/site';
 import Link from 'next/link';
 
 export function Footer() {
@@ -13,8 +14,8 @@ export function Footer() {
               <span className="font-semibold tracking-tight text-zinc-900">CPF</span>
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed max-w-[30ch]">
-              비즈니스 인사이트와 컨설팅 노하우를<br />
-              기록하는 공간.
+              미디어믹스와 마케팅 전략,<br />
+              그리고 서비스 개발.
             </p>
           </div>
           <div className="flex gap-12">
@@ -24,16 +25,16 @@ export function Footer() {
               </p>
               <div className="flex flex-col gap-2">
                 <Link
-                  href="/blog"
+                  href="/"
                   className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
                 >
-                  Blog
+                  서비스
                 </Link>
                 <Link
                   href="/about"
                   className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
                 >
-                  About
+                  사업 소개
                 </Link>
               </div>
             </div>
@@ -59,6 +60,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-zinc-200">
+          <p className="text-sm text-zinc-600 mb-3">{site.legalName} · 대표 {site.operator} · {site.location}</p>
           <p className="text-xs text-zinc-400">&copy; {year} CPF. All rights reserved.</p>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="text-base font-bold text-zinc-900 mb-3">1. 개요</h2>
           <p>
-            amkim.co(이하 &quot;서비스&quot;)를 운영하는 {site.operator}(이하 &quot;운영자&quot;)은 이용자의 개인정보를 중요하게 여기며,
+            {site.legalName}(CPF, 대표 {site.operator}, 이하 &quot;운영자&quot;)은 amkim.co(이하 &quot;서비스&quot;) 이용자의 개인정보를 중요하게 여기며,
             「개인정보 보호법」 및 관계 법령을 준수합니다. 본 방침은 운영자가 수집하는 개인정보의 항목,
             수집 목적, 이용 방법, 보유 기간 및 삭제 절차를 안내합니다.
           </p>

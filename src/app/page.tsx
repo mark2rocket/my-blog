@@ -1,218 +1,75 @@
-import { site } from '@/lib/site';
 import Link from 'next/link';
-import { getAllPosts } from '@/lib/posts';
-import { format } from 'date-fns';
-import { TrendingUp, Target, BookOpen, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { site } from '@/lib/site';
 
-const features = [
-  {
-    icon: TrendingUp,
-    title: '전략 컨설팅',
-    desc: '데이터와 현장 경험을 결합한 실질적인 비즈니스 전략을 설계합니다.',
-  },
-  {
-    icon: Target,
-    title: '실행 최적화',
-    desc: '전략을 현장에서 작동하게 만드는 운영 효율화 방법론을 공유합니다.',
-  },
-  {
-    icon: BookOpen,
-    title: '인사이트 아카이브',
-    desc: '누적된 컨설팅 경험에서 추출한 솔직하고 실용적인 관점을 기록합니다.',
-  },
+const services = [
+  { title: '미디어믹스', description: '어떤 매체에 집중할지, 예산을 어떻게 나눌지. 마케팅 실행의 출발점이 되는 매체 구성과 배분 방향을 다룹니다.' },
+  { title: '마케팅 전략', description: '사업의 목표와 고객을 바탕으로 마케팅 방향을 정리하고, 실행할 과제의 우선순위를 구체화합니다.' },
+  { title: '서비스 개발', description: '전략을 실제 업무에서 활용할 수 있도록 마케팅 서비스를 개발하고 고객과 함께 테스트합니다.' },
 ];
 
-export default async function HomePage() {
-  const posts = await getAllPosts();
-  const recentPosts = posts.slice(0, 4);
-
+export default function HomePage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'CPF',
-            url: site.url,
-            description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF',
-          }),
-        }}
-      />
+    <div>
+      <section className="max-w-6xl mx-auto px-6 pt-16 pb-16 md:pt-20 md:pb-24">
+        <p className="text-sm font-semibold text-primary mb-6">마케팅 전략 · 미디어믹스 · 개발</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.2] text-zinc-900 mb-6">
+          마케팅의 다음 실행을,<br />구체적인 서비스로.
+        </h1>
+        <p className="text-lg text-zinc-600 leading-relaxed max-w-2xl mb-8">
+          CPF는 미디어믹스와 마케팅 전략을 수립하고,<br className="hidden sm:block" /> 이를 활용하는 서비스를 개발합니다.
+        </p>
+        <a href="#services" className="inline-flex min-h-11 items-center gap-3 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white">
+          서비스 살펴보기 <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </section>
 
-      {/* Hero — Split layout */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
-        <div className="grid md:grid-cols-[58fr_42fr] gap-14 items-center">
+      <section aria-label="현재 서비스 단계" className="border-y border-zinc-200 bg-zinc-50">
+        <div className="max-w-6xl mx-auto px-6 py-8 grid gap-6 md:grid-cols-[1fr_2fr] md:gap-16">
           <div>
-            <div className="flex items-center gap-2 mb-7">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="text-sm text-zinc-400 tracking-wide">Consulting & Insights</span>
-            </div>
-            <h1 className="text-5xl md:text-[3.75rem] font-black tracking-tight leading-[1.08] text-zinc-900 mb-6">
-              비즈니스를<br />
-              움직이는<br />
-              <span className="text-primary">깊이 있는 시각</span>
-            </h1>
-            <p className="text-lg text-zinc-500 leading-relaxed max-w-[46ch] mb-10">
-              CPF는 현장 경험에서 나온 컨설팅 인사이트를 기록합니다.
-              전략, 운영, 그리고 실행에 관한 솔직한 관점.
-            </p>
-            <div className="flex items-center gap-5">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:opacity-90 transition-opacity active:scale-[0.98]"
-              >
-                인사이트 보기
-                <ArrowRight size={15} />
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-3 py-2 text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
-              >
-                CPF 소개 →
-              </Link>
-            </div>
+            <p className="text-sm font-semibold text-primary mb-2">{site.beta.stage}</p>
+            <p className="text-3xl font-bold text-zinc-900">{site.beta.customerCount}의 고객과 함께</p>
           </div>
-
-          {/* Hero image */}
-          <div className="relative hidden md:block">
-            <div className="relative rounded-2xl overflow-hidden aspect-[3/4] shadow-xl shadow-zinc-200/80">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://picsum.photos/seed/cpf-hero/600/800"
-                alt="CPF Consulting"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-primary/8" />
-            </div>
-            <div className="absolute -bottom-5 -left-5 w-28 h-28 rounded-2xl bg-primary/8 -z-10" />
-            <div className="absolute -top-3 -right-3 w-16 h-16 rounded-xl bg-zinc-100 -z-10" />
+          <div className="text-zinc-600 leading-relaxed">
+            <p>현재 마케팅 서비스를 개발하며 베타테스트를 진행하고 있습니다. 고객이 실제로 사용하는 과정에서 서비스의 활용성을 확인하고 있습니다.</p>
+            <p className="mt-2 text-sm">{site.beta.asOf} 기준 베타테스트 참여 규모입니다.</p>
           </div>
         </div>
       </section>
 
-      {/* Feature strip */}
-      <section className="border-y border-zinc-200 bg-zinc-50/70">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-zinc-200">
-            {features.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="px-0 md:px-8 py-8 md:py-0 first:pt-0 last:pb-0 md:first:pt-0 md:last:pb-0 first:pl-0 last:pr-0">
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                    <Icon size={18} className="text-primary" />
-                  </div>
-                  <h3 className="text-base font-bold text-zinc-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
-                </div>
-              );
-            })}
-          </div>
+      <section id="services" className="max-w-6xl mx-auto px-6 py-16 md:py-20 scroll-mt-24">
+        <h2 className="text-3xl font-bold tracking-tight text-zinc-900 mb-4">전략에서 개발까지 이어지는 일</h2>
+        <p className="text-zinc-600 leading-relaxed max-w-2xl mb-10">매체 선택과 마케팅 방향을 고민하는 사업자와 마케팅 담당자를 위한 서비스를 만들고 있습니다.</p>
+        <div className="border-t border-zinc-200">
+          {services.map((service) => (
+            <div key={service.title} className="grid gap-3 md:grid-cols-[1fr_2fr] md:gap-16 py-8 border-b border-zinc-200">
+              <h3 className="text-xl font-semibold text-zinc-900">{service.title}</h3>
+              <p className="max-w-2xl text-zinc-600 leading-relaxed">{service.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Image highlight */}
-      <section className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-xl overflow-hidden aspect-square">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://picsum.photos/seed/cpf-office/400/400"
-                alt=""
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden aspect-square mt-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://picsum.photos/seed/cpf-strategy/400/400"
-                alt=""
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden col-span-2 h-36">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://picsum.photos/seed/cpf-team/800/300"
-                alt=""
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <div className="md:pl-6">
-            <span className="text-xs font-medium uppercase tracking-widest text-primary mb-4 block">
-              About CPF
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-900 mb-5 leading-tight">
-              경험에서 나온<br />진짜 인사이트
-            </h2>
-            <p className="text-zinc-500 leading-relaxed mb-6">
-              CPF가 다루는 비즈니스 전략과 운영의 주제,
-              그리고 운영자와 연락처를 확인하세요.
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity duration-150"
-            >
-              자세히 알아보기 <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
+      <section className="max-w-6xl mx-auto px-6 pb-16 md:pb-20" aria-labelledby="local-service-title">
+        <h2 id="local-service-title" className="text-3xl font-bold tracking-tight text-zinc-900 mb-4">고객사 환경에서 사용하는 로컬 에이전트</h2>
+        <p className="text-zinc-600 leading-relaxed max-w-2xl mb-8">고객사 로컬에 구축한 에이전트에 Claude를 연동했습니다. 미디어믹스와 마케팅 전략을 다루는 서비스 개발의 일부로, 실제 고객 환경에서 베타테스트를 진행하고 있습니다.</p>
+        <dl className="grid sm:grid-cols-2 gap-8 bg-zinc-50 border border-zinc-200 rounded-xl p-6 md:p-8">
+          <div><dt className="font-semibold text-zinc-900 mb-2">제공 방식</dt><dd className="text-zinc-600 leading-relaxed">고객사 로컬 환경에 구축하는 서비스</dd></div>
+          <div><dt className="font-semibold text-zinc-900 mb-2">Claude 연동 상태</dt><dd className="text-zinc-600 leading-relaxed">에이전트 연동 완료 · 고객 베타테스트 중</dd></div>
+        </dl>
+        <p className="text-sm text-zinc-600 leading-relaxed mt-4">로컬 환경에서 사용하는 서비스로, 공개 웹 데모 URL은 제공하지 않습니다. 서비스 구성과 이용 방식은 문의를 통해 안내합니다.</p>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="border-t border-zinc-200" />
-      </div>
-
-      {/* Recent Posts */}
-      <section className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400 block mb-1">
-              Recent
-            </span>
-            <h2 className="text-2xl font-bold tracking-tight text-zinc-900">최근 인사이트</h2>
-          </div>
-          <Link
-            href="/blog"
-            className="text-sm text-zinc-400 hover:text-primary transition-colors duration-150 pb-1"
-          >
-            전체 보기 →
-          </Link>
+      <section className="max-w-6xl mx-auto px-6 pb-16 md:pb-20">
+        <div className="rounded-xl bg-primary/5 p-8 md:p-12">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-4">지금 고민하는 마케팅 과제가 있나요?</h2>
+          <p className="text-zinc-600 leading-relaxed max-w-2xl mb-6">미디어믹스, 마케팅 전략, 개발 또는 베타테스트에 관해 문의해 주세요. 현재의 과제와 필요한 내용을 이메일로 알려주시면 됩니다.</p>
+          <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center gap-2 text-primary font-semibold break-all">
+            {site.email} <ArrowRight size={16} aria-hidden="true" className="shrink-0" />
+          </a>
         </div>
-
-        {recentPosts.length === 0 ? (
-          <div className="py-12 border-t border-zinc-200 text-center">
-            <p className="text-zinc-400 text-sm mb-3">아직 작성된 포스트가 없습니다.</p>
-            <Link href="/about" className="text-sm text-primary hover:opacity-80 transition-opacity">
-              CPF 소개 먼저 보기 →
-            </Link>
-          </div>
-        ) : (
-          <div className="divide-y divide-zinc-200">
-            {recentPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group flex items-baseline justify-between gap-6 py-5 -mx-3 px-3 rounded-lg hover:bg-zinc-50 hover:-translate-y-px transition-all duration-150"
-              >
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-bold text-zinc-900 group-hover:text-primary transition-colors duration-150 line-clamp-1 mb-1">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-zinc-400 line-clamp-1">{post.description}</p>
-                </div>
-                <time className="text-xs text-zinc-400 shrink-0">
-                  {format(new Date(post.date), 'yyyy.MM.dd')}
-                </time>
-              </Link>
-            ))}
-          </div>
-        )}
+        <Link href="/about" className="inline-flex min-h-11 items-center mt-6 text-sm text-zinc-600 underline underline-offset-4">CPF와 운영자 소개</Link>
       </section>
-    </>
+    </div>
   );
 }

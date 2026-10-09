@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/about', label: 'About' },
+  { href: '/', label: '서비스' },
+  { href: '/about', label: '사업 소개' },
 ];
 
 export function NavLinks() {
@@ -20,8 +20,9 @@ export function NavLinks() {
           <Link
             key={href}
             href={href}
+            aria-current={isActive ? 'page' : undefined}
             className={cn(
-              'text-sm transition-colors duration-150 relative',
+              'inline-flex min-h-11 items-center text-sm transition-colors duration-150 relative',
               'after:absolute after:bottom-[-2px] after:left-0 after:h-px after:bg-primary after:transition-all after:duration-200',
               isActive
                 ? 'text-zinc-900 after:w-full'

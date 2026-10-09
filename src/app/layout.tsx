@@ -8,11 +8,11 @@ import { MixpanelProvider } from '@/components/providers/MixpanelProvider';
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: 'CPF — Consulting & Insights',
+    default: site.title,
     template: '%s | CPF',
   },
-  description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF의 블로그입니다.',
-  keywords: ['컨설팅', '인사이트', 'CPF', '비즈니스', '전략'],
+  description: site.description,
+  keywords: ['미디어믹스', '마케팅 전략', 'CPF', '서비스 개발'],
   authors: [{ name: 'CPF' }],
   creator: 'CPF',
   openGraph: {
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     url: '/',
     siteName: 'CPF',
-    title: 'CPF — Consulting & Insights',
-    description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF의 블로그입니다.',
+    title: site.title,
+    description: site.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CPF — Consulting & Insights',
-    description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달합니다.',
+    title: site.title,
+    description: site.description,
   },
   robots: {
     index: true,
@@ -55,15 +55,19 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'CPF',
+              name: site.name,
+              legalName: site.legalName,
+              foundingDate: site.founded,
+              email: site.email,
               url: site.url,
-              description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF',
+              description: site.description,
             }),
           }}
         />
         <MixpanelProvider>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:p-4">본문으로 건너뛰기</a>
           <Header />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1">
             {children}
           </main>
           <Footer />
