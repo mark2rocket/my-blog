@@ -1,18 +1,20 @@
 import Link from 'next/link';
 import { NavLinks } from './NavLinks';
+import { site } from '@/lib/site';
 
 export function Header() {
   return (
-    <header className="border-b border-zinc-200 bg-white/95 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4">
-        <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="w-1.5 h-5 bg-primary rounded-full transition-all duration-200 group-hover:h-6" />
-            <span className="text-lg font-semibold tracking-tight text-zinc-900">CPF</span>
-          </Link>
-          <NavLinks />
-        </nav>
-      </div>
+    <header className="site-header">
+      <nav className="header-inner" aria-label="주 메뉴">
+        <Link href="/" className="brand-link" aria-label="CPF 홈">
+          <span className="brand-mark" aria-hidden="true" />
+          CPF
+        </Link>
+        <NavLinks />
+        <a className="header-contact" href={`mailto:${site.email}`}>
+          베타 이용 문의 <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
     </header>
   );
 }

@@ -2,37 +2,22 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', label: '서비스' },
+  { href: '/#services', label: '서비스' },
+  { href: '/#how-it-works', label: '작동 방식' },
   { href: '/about', label: '사업 소개' },
 ];
 
 export function NavLinks() {
   const pathname = usePathname();
-
   return (
-    <div className="flex items-center gap-8">
-      {navItems.map(({ href, label }) => {
-        const isActive = pathname === href || pathname.startsWith(`${href}/`);
-        return (
-          <Link
-            key={href}
-            href={href}
-            aria-current={isActive ? 'page' : undefined}
-            className={cn(
-              'inline-flex min-h-11 items-center text-sm transition-colors duration-150 relative',
-              'after:absolute after:bottom-[-2px] after:left-0 after:h-px after:bg-primary after:transition-all after:duration-200',
-              isActive
-                ? 'text-zinc-900 after:w-full'
-                : 'text-zinc-500 hover:text-zinc-900 after:w-0 hover:after:w-full'
-            )}
-          >
-            {label}
-          </Link>
-        );
-      })}
+    <div className="header-links">
+      {navItems.map(({ href, label }) => (
+        <Link key={href} href={href} aria-current={pathname === href ? 'page' : undefined}>
+          {label}
+        </Link>
+      ))}
     </div>
   );
 }
