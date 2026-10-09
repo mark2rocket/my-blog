@@ -1,3 +1,4 @@
+import { site } from '@/lib/site';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import { format } from 'date-fns';
@@ -34,7 +35,7 @@ export default async function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
             name: 'CPF',
-            url: process.env.SITE_URL || 'https://example.com',
+            url: site.url,
             description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF',
           }),
         }}
@@ -148,8 +149,8 @@ export default async function HomePage() {
               경험에서 나온<br />진짜 인사이트
             </h2>
             <p className="text-zinc-500 leading-relaxed mb-6">
-              이론이 아닌 현장. 수십 개의 프로젝트를 통해 검증된 관점과 방법론을
-              CPF에서 직접 확인하세요.
+              CPF가 다루는 비즈니스 전략과 운영의 주제,
+              그리고 운영자와 연락처를 확인하세요.
             </p>
             <Link
               href="/about"

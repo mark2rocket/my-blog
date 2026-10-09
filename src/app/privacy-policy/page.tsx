@@ -1,3 +1,4 @@
+import { site } from '@/lib/site';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="text-base font-bold text-zinc-900 mb-3">1. 개요</h2>
           <p>
-            amkim.co(이하 "서비스")를 운영하는 김새암(이하 "운영자")은 이용자의 개인정보를 중요하게 여기며,
+            amkim.co(이하 &quot;서비스&quot;)를 운영하는 {site.operator}(이하 &quot;운영자&quot;)은 이용자의 개인정보를 중요하게 여기며,
             「개인정보 보호법」 및 관계 법령을 준수합니다. 본 방침은 운영자가 수집하는 개인정보의 항목,
             수집 목적, 이용 방법, 보유 기간 및 삭제 절차를 안내합니다.
           </p>
@@ -149,14 +150,14 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="text-base font-bold text-zinc-900 mb-3">8. 개인정보 보호책임자</h2>
           <div className="bg-zinc-50 rounded-xl p-5 border border-zinc-200 text-sm space-y-1.5">
-            <p><span className="font-semibold text-zinc-700">성명:</span> 김새암</p>
+            <p><span className="font-semibold text-zinc-700">성명:</span> {site.operator}</p>
             <p>
               <span className="font-semibold text-zinc-700">이메일:</span>{' '}
               <a
-                href="mailto:kimsaeam@amkim.co"
+                href={`mailto:${site.email}`}
                 className="text-primary hover:opacity-80"
               >
-                kimsaeam@amkim.co
+                {site.email}
               </a>
             </p>
           </div>

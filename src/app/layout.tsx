@@ -1,3 +1,4 @@
+import { site } from '@/lib/site';
 import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
@@ -5,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { MixpanelProvider } from '@/components/providers/MixpanelProvider';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.SITE_URL || 'https://example.com'),
+  metadataBase: new URL(site.url),
   title: {
     default: 'CPF — Consulting & Insights',
     template: '%s | CPF',
@@ -55,7 +56,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'CPF',
-              url: process.env.SITE_URL || 'https://example.com',
+              url: site.url,
               description: '비즈니스 컨설팅과 깊이 있는 인사이트를 전달하는 CPF',
             }),
           }}

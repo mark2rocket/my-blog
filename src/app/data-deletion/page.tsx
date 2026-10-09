@@ -1,5 +1,6 @@
+import { site } from '@/lib/site';
 import { Metadata } from 'next';
-import { Mail, Trash2, Clock, CheckCircle } from 'lucide-react';
+import { Mail, Clock, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '데이터 삭제 요청',
@@ -14,7 +15,7 @@ const steps = [
   {
     icon: Mail,
     title: '이메일로 요청',
-    desc: 'kimsaeam@amkim.co 로 삭제 요청 이메일을 보내주세요.',
+    desc: `${site.email} 로 삭제 요청 이메일을 보내주세요.`,
   },
   {
     icon: Clock,
@@ -108,14 +109,14 @@ export default function DataDeletionPage() {
         <section>
           <h2 className="text-base font-bold text-zinc-900 mb-3">문의</h2>
           <div className="bg-zinc-50 rounded-xl p-5 border border-zinc-200 text-sm space-y-1.5">
-            <p><span className="font-semibold text-zinc-700">개인정보 보호책임자:</span> 김새암</p>
+            <p><span className="font-semibold text-zinc-700">개인정보 보호책임자:</span> {site.operator}</p>
             <p>
               <span className="font-semibold text-zinc-700">이메일:</span>{' '}
               <a
-                href="mailto:kimsaeam@amkim.co"
+                href={`mailto:${site.email}`}
                 className="text-primary hover:opacity-80"
               >
-                kimsaeam@amkim.co
+                {site.email}
               </a>
             </p>
             <p className="text-zinc-400 pt-1">요청 접수 후 지체 없이 답변 드리겠습니다.</p>

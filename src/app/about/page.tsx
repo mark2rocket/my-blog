@@ -1,3 +1,4 @@
+import { site } from '@/lib/site';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Mail } from 'lucide-react';
@@ -14,12 +15,6 @@ const topics = [
   '실행 방법론',
   '시장 분석',
   '성장 전략',
-];
-
-const stats = [
-  { value: '10+', label: '년 컨설팅 경력' },
-  { value: '50+', label: '프로젝트 수행' },
-  { value: '다양한', label: '산업 경험' },
 ];
 
 export default function AboutPage() {
@@ -47,15 +42,11 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-4 py-8 mb-12 border-y border-zinc-200">
-        {stats.map((stat) => (
-          <div key={stat.label} className="text-center">
-            <div className="text-2xl font-bold text-zinc-900 mb-1">{stat.value}</div>
-            <div className="text-xs text-zinc-400">{stat.label}</div>
-          </div>
-        ))}
-      </div>
+      <dl className="space-y-4 border-y border-zinc-200 py-6 mb-12 text-sm">
+        <div><dt className="text-zinc-500">사이트 이름</dt><dd className="mt-1 font-medium">{site.name}</dd></div>
+        <div><dt className="text-zinc-500">운영자</dt><dd className="mt-1 font-medium">{site.operator}</dd></div>
+        <div><dt className="text-zinc-500">웹사이트</dt><dd className="mt-1">amkim.co는 CPF의 웹사이트입니다.</dd></div>
+      </dl>
 
       {/* Topics */}
       <div className="mb-12">
@@ -79,11 +70,11 @@ export default function AboutPage() {
           컨설팅 문의, 협업 제안, 또는 글에 대한 피드백을 언제든 환영합니다.
         </p>
         <a
-          href="mailto:contact@cpf.kr"
+          href={`mailto:${site.email}`}
           className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity duration-150"
         >
           <Mail size={14} />
-          contact@cpf.kr
+          {site.email}
         </a>
       </div>
 

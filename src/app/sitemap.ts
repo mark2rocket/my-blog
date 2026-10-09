@@ -1,26 +1,16 @@
 import { MetadataRoute } from 'next';
+import { site } from '@/lib/site';
+import { getAllPosts } from '@/lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.SITE_URL || 'https://example.com';
-
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
+  const posts = await getAllPosts();
+  return [
+    { url: site.url, changeFrequency: 'weekly', priority: 1 },
+    { url: `${site.url}/about`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/blog`, changeFrequency: 'weekly', priority: 0.7 },
+    ...posts.map((post) => ({
+      url: `${site.url}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+    })),
   ];
-
-  // Dynamic blog posts will be added in Phase 3
-  const postPages: MetadataRoute.Sitemap = [];
-
-  return [...staticPages, ...postPages];
 }

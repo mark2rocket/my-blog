@@ -1,3 +1,4 @@
+import { site } from '@/lib/site';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -76,20 +77,20 @@ export default async function BlogPostPage({ params }: Props) {
             author: {
               '@type': 'Person',
               name: post.author || 'CPF',
-              url: `${process.env.SITE_URL || 'https://example.com'}/about`,
+              url: `${site.url}/about`,
             },
             publisher: {
               '@type': 'Organization',
               name: 'CPF',
               logo: {
                 '@type': 'ImageObject',
-                url: `${process.env.SITE_URL || 'https://example.com'}/og-image.svg`,
+                url: `${site.url}/og-image.svg`,
               },
             },
-            image: post.image || `${process.env.SITE_URL || 'https://example.com'}/og-image.svg`,
+            image: post.image || `${site.url}/og-image.svg`,
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `${process.env.SITE_URL || 'https://example.com'}/blog/${slug}`,
+              '@id': `${site.url}/blog/${slug}`,
             },
             keywords: post.tags?.join(', ') || '',
           }),
